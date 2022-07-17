@@ -17,7 +17,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
-enum keymap_layers {
+enum keymap_layers
+{
     _QWERTY,
     _LOWER,
     _RAISE,
@@ -43,6 +44,9 @@ enum keymap_layers {
 #define KC_G_DEL    MT(MOD_LGUI, KC_DEL)    // command or delete
 #define KC_A_BS     LT(_BALL, KC_BSPC)      // adjust or back space
 #define KC_A_DEL    LT(_BALL, KC_DEL)       // adjust or delete
+
+// magcho
+
 // clang-format on
 
 // clang-format off
@@ -50,37 +54,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT_right_ball(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_LBRC,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_ESC,
+         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,  KC_GRV,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_ESC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_RBRC,                         KC_H,    KC_J,    KC_K,    KC_L, KC_MINS, KC_SCLN,
+         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,  KC_TAB,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------'                    |--------+--------+--------+--------+--------+--------|
          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                  KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_BSLS,
   //|--------+--------+--------+--------+--------+-------+--------.            `--------+--------+--------+--------+--------+--------|
-      KC_LCTL,KC_AL_CP,    KC_G_BS,   KC_L_SPC,   KC_S_EN, KC_A_JA,               KC_R_ENT,KC_G_DEL,        KC_EXLM,  KC_TAB, KC_PSCR
+      KC_LSFT,KC_LCTRL,    KC_LALT,     _LOWER,   KC_S_EN, KC_A_JA,                 KC_ENT,  _RAISE,        KC_EXLM,  KC_TAB, KC_PSCR
   //`--------+--------'  `--------'  `--------' `--------+--------'              `--------+--------'      `--------+--------+--------'
   ),
 
   [_RAISE] = LAYOUT_right_ball(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_BSLS,    KC_7,    KC_8,    KC_9, KC_PLUS, KC_LPRN,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,   KC_F6,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_ASTR,    KC_4,    KC_5,    KC_6,  KC_DOT, KC_RPRN,                      _______, KC_LEFT,   KC_UP, KC_RGHT, _______,  KC_F12,
+        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,  KC_F12,                      _______, KC_LEFT,   KC_UP, KC_RGHT, _______, _______,
   //|--------+--------+--------+--------+--------+--------'                    |--------+--------+--------+--------+--------+--------|
-      KC_SLSH,    KC_1,    KC_2,    KC_3,  KC_EQL,                               _______, _______, KC_DOWN, _______, _______, _______,
+        KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,                               _______, _______, KC_DOWN, _______, _______, _______,
   //|--------+--------+--------+--------+--------+-------+--------.            `--------+--------+--------+--------+--------+--------|
-      _______,    KC_0,     KC_ENT,   KC_A_DEL,    KC_SPC, _______,                _______, _______,        _______, _______, _______
+      _______, _______,    _______,    _______,   _______, _______,                _______, _______,        _______, _______, _______
   //`--------+--------'  `--------'  `--------' `--------+--------'              `--------+--------'      `--------+--------+--------'
   ),
 
   [_LOWER] = LAYOUT_right_ball(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_LPRN,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+       KC_ESC, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_HASH, KC_EXLM, KC_AMPR, KC_PIPE,   KC_AT, KC_RPRN,                      _______, KC_BTN1, KC_PGUP, KC_BTN2, KC_BTN3,  KC_F12,
+      KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, _______,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
   //|--------+--------+--------+--------+--------+--------'                    |--------+--------+--------+--------+--------+--------|
-       KC_GRV,  KC_DQT, KC_QUOT, KC_CIRC, KC_TILD,                               _______, _______, KC_PGDN, _______, _______, _______,
+       KC_GRV,  KC_DQT, KC_QUOT, KC_CIRC, KC_TILD,                               KC_PLUS, KC_MINS,  KC_EQL, KC_LCBR, KC_RCBR, KC_PIPE,
   //|--------+--------+--------+--------+--------+-------+--------.            `--------+--------+--------+--------+--------+--------|
-      _______, KC_PERC,    _______,    _______,   _______, _______,                KC_A_BS, _______,        _______, _______, _______
+      _______, _______,    _______,    _______,   _______, _______,                _______, _______,        _______, _______, _______
   //`--------+--------'  `--------'  `--------' `--------+--------'              `--------+--------'      `--------+--------+--------'
   ),
 
@@ -99,7 +103,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-layer_state_t layer_state_set_user(layer_state_t state) {
+layer_state_t layer_state_set_user(layer_state_t state)
+{
     // Auto enable scroll mode when the highest layer is 3
     keyball_set_scroll_mode(get_highest_layer(state) == _BALL);
     return state;
@@ -107,29 +112,31 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 #ifdef OLED_ENABLE
 
-#    include "lib/oledkit/oledkit.h"
+#include "lib/oledkit/oledkit.h"
 
-void oledkit_render_info_user(void) {
+void oledkit_render_info_user(void)
+{
     keyball_oled_render_keyinfo();
     keyball_oled_render_ballinfo();
 
     const char *n;
-    switch (get_highest_layer(layer_state)) {
-        case _QWERTY:
-            n = PSTR("Default");
-            break;
-        case _RAISE:
-            n = PSTR("Raise");
-            break;
-        case _LOWER:
-            n = PSTR("Lower");
-            break;
-        case _BALL:
-            n = PSTR("Adjust");
-            break;
-        default:
-            n = PSTR("Undefined");
-            break;
+    switch (get_highest_layer(layer_state))
+    {
+    case _QWERTY:
+        n = PSTR("Default");
+        break;
+    case _RAISE:
+        n = PSTR("Raise");
+        break;
+    case _LOWER:
+        n = PSTR("Lower");
+        break;
+    case _BALL:
+        n = PSTR("Adjust");
+        break;
+    default:
+        n = PSTR("Undefined");
+        break;
     }
     oled_write_P(PSTR("Layer: "), false);
     oled_write_ln_P(n, false);
